@@ -20,7 +20,7 @@ Partial Class Emp
 
                 ' SQL発行して結果を取得
                 Dim sql As String = "SELECT E.EMP_NO, E.EMP_NAME, J.JOB_NAME " &
-                                      "FROM EMP E  " &
+                                      "FROM EMP E " &
                                  "LEFT JOIN MST_JOB J " &
                                         "ON E.JOB_NO = J.JOB_NO " &
                                   "ORDER BY E.EMP_NO"

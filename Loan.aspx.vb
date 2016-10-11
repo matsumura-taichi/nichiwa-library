@@ -1,4 +1,5 @@
 ﻿
+Imports System.Data
 Imports Oracle.ManagedDataAccess.Client
 
 Partial Class Loan
@@ -44,6 +45,7 @@ Partial Class Loan
             Finally
                 Conn.Dispose()
             End Try
+
         End If
 
     End Sub
@@ -58,4 +60,26 @@ Partial Class Loan
         Me.Response.Redirect("~/OutPutSetting.aspx")
     End Sub
 
+    ' CSV出力ボタンクリック
+    Protected Sub CsvOutput_Click(ByVal sender As Object, ByVal e As System.EventArgs) _
+Handles CsvOutput.Click
+
+        ' 貸出番号リスト
+        Dim loanNoList As New List(Of Integer)
+
+        For Each row As GridViewRow In Grid_Loans.Rows
+            ' チェックボックスにチェック入ってるか
+            Dim cb As CheckBox = CType(row.FindControl("CsvCheck"), CheckBox)
+            ' 貸出番号の値を取得
+            Dim loanNoStr As String = row.Cells(1).Text.ToString
+            ' チェックが入っていてかつ、貸出番号が空白でなければ
+            If cb.Checked AndAlso Not String.IsNullOrWhiteSpace(loanNoStr) Then
+                ' 貸出番号リストに貸し出し番号を追加
+                loanNoList.Add(Integer.Parse(loanNoStr))
+            End If
+        Next
+
+        MsgBox(loanNoList, MsgBoxStyle.OkOnly, "完了")
+
+    End Sub
 End Class

@@ -8,6 +8,11 @@
         <p><asp:LinkButton ID="LinkOutPutSetting" runat="server">CSV出力バッチ設定</asp:LinkButton></p>
         <asp:GridView ID="Grid_Loans" runat="server" AutoGenerateColumns="False" DataKeyNames="LOAN_NO">
             <Columns>
+                <asp:TemplateField  HeaderText="CSV DL">
+                    <ItemTemplate>
+                        <asp:CheckBox runat="server" ID="CsvCheck" />
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="LOAN_NO" HeaderText="貸出番号" ReadOnly="True" SortExpression="LOAN_NO" />
                 <asp:BoundField DataField="BOOK_NAME" HeaderText="書籍名" SortExpression="BOOK_NAME" />
                 <asp:BoundField DataField="EMP_NAME" HeaderText="社員名" SortExpression="EMP_NAME" />
@@ -16,5 +21,6 @@
             </Columns>
         </asp:GridView>
     </div>
+    <asp:Button ID="CsvOutput" runat="server" Text="csvダウンロード" />
 
 </asp:Content>
