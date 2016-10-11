@@ -70,7 +70,7 @@ Partial Class OutPutSetting
                 EndDate.VisibleDate = setStartDate ' 表示する日付を設定
 
                 ' 終了日をDataTableから取得して設定
-                Dim setEndDate As Date = dt.Rows(0).Item("End_DATE")
+                Dim setEndDate As Date = dt.Rows(0).Item("END_DATE")
                 EndDate.SelectedDate = setEndDate ' 選択する日付を設定
                 EndDate.VisibleDate = setEndDate ' 表示する日付を設定
 
